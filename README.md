@@ -83,7 +83,7 @@ body:
 
 1. Open VS Code
 2. Press `Cmd+Shift+X` (macOS) or `Ctrl+Shift+X` (Windows/Linux)
-3. Search for "GitHub Issue Template Preview"
+3. Search "ReesPozzi.github-issue-template-preview"
 4. Click Install
 
 
