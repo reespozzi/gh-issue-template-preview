@@ -2,6 +2,9 @@
 
 Preview and validate GitHub issue templates (YAML format) directly in VS Code with live rendering and syntax validation!
 
+<img width="1600" height="1002" alt="image" src="https://github.com/user-attachments/assets/7a79db12-b415-481d-a8a5-3dc39bc175c5" />
+
+
 ## Features
 
 - 🔍 **Live Preview**: See your GitHub issue templates rendered in real-time as you edit
