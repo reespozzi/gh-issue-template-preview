@@ -1,0 +1,60 @@
+{
+  "name": "github-issue-template-preview",
+  "displayName": "GitHub Issue Template Preview",
+  "description": "Preview and validate GitHub issue templates in VS Code with live rendering",
+  "version": "0.1.0",
+  "publisher": "reespozzi",
+  "author": {
+    "name": "Rees Pozzi"
+  },
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "Visualization"
+  ],
+  "keywords": [
+    "github",
+    "issue",
+    "template",
+    "preview",
+    "yaml",
+    "markdown"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/reespozzi/github-issue-template-preview.git"
+  },
+  "bugs": {
+    "url": "https://github.com/reespozzi/github-issue-template-preview/issues"
+  },
+  "homepage": "https://github.com/reespozzi/github-issue-template-preview#readme",
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "github-issue-preview.preview",
+        "title": "Preview GitHub Issue Template",
+        "category": "GitHub Issue Templates"
+      }
+    ]
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.1"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/vscode": "^1.85.0",
+    "@types/node": "^20.x",
+    "esbuild": "^0.27.1",
+    "typescript": "^5.3.0"
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "node esbuild.js",
+    "watch": "node esbuild.js --watch",
+    "package": "node esbuild.js --production"
+  }
+}
