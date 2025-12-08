@@ -8,7 +8,7 @@ import * as yaml from 'js-yaml';
 import { renderIssueTemplate } from './renderer/templateRenderer';
 import { getWebviewContent } from './renderer/webviewContent';
 
-const PREVIEW_COMMAND = 'github-issue-preview.preview';
+const PREVIEW_COMMAND = 'gh-issue-preview.preview';
 const PANEL_TYPE = 'githubIssuePreview';
 const PANEL_TITLE = 'Issue Template Preview';
 

@@ -51,8 +51,8 @@ Feature suggestions are welcome! Before submitting:
 
 1. **Clone your fork:**
    ```bash
-   git clone https://github.com/reespozzi/github-issue-template-preview.git
-   cd github-issue-template-preview
+   git clone https://github.com/reespozzi/gh-issue-template-preview.git
+   cd gh-issue-template-preview
    ```
 
 2. **Install dependencies:**
@@ -210,7 +210,7 @@ Releases are managed by the maintainers. The process involves:
 If you have questions that aren't covered in this guide:
 
 - Check the [README.md](README.md)
-- Search [existing issues](https://github.com/reespozzi/github-issue-template-preview/issues)
+- Search [existing issues](https://github.com/reespozzi/gh-issue-template-preview/issues)
 - Open a new issue with the "question" label
 
 ## License

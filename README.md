@@ -86,7 +86,7 @@ body:
 
 1. Open VS Code
 2. Press `Cmd+Shift+X` (macOS) or `Ctrl+Shift+X` (Windows/Linux)
-3. Search "ReesPozzi.github-issue-template-preview"
+3. Search "ReesPozzi.gh-issue-template-preview"
 4. Click Install
 
 
@@ -98,8 +98,8 @@ Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for det
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/reespozzi/github-issue-template-preview.git
-   cd github-issue-template-preview
+   git clone https://github.com/reespozzi/gh-issue-template-preview.git
+   cd gh-issue-template-preview
    ```
 
 2. Install dependencies:
@@ -126,7 +126,7 @@ Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for det
 - Complex markdown features (code blocks, tables) in field descriptions are not fully rendered yet
 - No support for GitHub issue form schema validation (coming soon)
 
-See the [issues page](https://github.com/reespozzi/github-issue-template-preview/issues) for a complete list of known issues and feature requests.
+See the [issues page](https://github.com/reespozzi/gh-issue-template-preview/issues) for a complete list of known issues and feature requests.
 
 
 ## License

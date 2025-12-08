@@ -1,5 +1,5 @@
 {
-  "name": "github-issue-template-preview",
+  "name": "gh-issue-template-preview",
   "displayName": "GitHub Issue Template Preview",
   "description": "Preview and validate GitHub issue templates in VS Code with live rendering",
   "version": "0.1.0",
@@ -25,17 +25,17 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/reespozzi/github-issue-template-preview.git"
+    "url": "https://github.com/reespozzi/gh-issue-template-preview.git"
   },
   "bugs": {
-    "url": "https://github.com/reespozzi/github-issue-template-preview/issues"
+    "url": "https://github.com/reespozzi/gh-issue-template-preview/issues"
   },
-  "homepage": "https://github.com/reespozzi/github-issue-template-preview#readme",
+  "homepage": "https://github.com/reespozzi/gh-issue-template-preview#readme",
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "github-issue-preview.preview",
+        "command": "gh-issue-preview.preview",
         "title": "Preview GitHub Issue Template",
         "category": "GitHub Issue Templates"
       }
