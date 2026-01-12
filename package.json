@@ -2,7 +2,7 @@
   "name": "github-issue-template-preview",
   "displayName": "GitHub Issue Template Preview",
   "description": "Preview and validate GitHub issue templates in VS Code with live rendering",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "reespozzi",
   "author": {
     "name": "Rees Pozzi"
@@ -15,6 +15,7 @@
     "Other",
     "Visualization"
   ],
+  "icon" : "images/image.png",
   "keywords": [
     "github",
     "issue",
