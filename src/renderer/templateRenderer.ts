@@ -149,7 +149,7 @@ function renderBodyField(field: BodyField): string {
 					const required = typeof option === 'object' ? option.required : false;
 					html += `<div class="checkbox-option">
 						<input type="checkbox" ${required ? 'required' : ''} />
-						<span>${escapeHtml(optionLabel)}</span>
+						<span>${escapeHtml(optionLabel)}${required ? '<span class="required-asterisk"> *</span>' : ''}</span>
 					</div>`;
 				});
 			}
