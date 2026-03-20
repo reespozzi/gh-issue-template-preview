@@ -21,23 +21,11 @@ export function renderIssueTemplate(content: string, parseYaml: (content: string
 
 		let html = '<div class="issue-template">';
 
-		// Template name
-		if (parsed.name) {
-			html += `<h1>${escapeHtml(parsed.name)}</h1>`;
-		}
-
-		// Template description
-		if (parsed.description) {
-			html += `<p class="description">${escapeHtml(parsed.description)}</p>`;
-		}
-
-		// Title field
-		if (parsed.title) {
-			html += `<div class="field">
-				<label>Title</label>
-				<input type="text" value="${escapeHtml(parsed.title)}" readonly />
-			</div>`;
-		}
+		// Default title input (always shown, as GitHub does)
+		html += `<div class="field">
+			<label>Add a title<span class="required-asterisk"> *</span></label>
+			<input type="text" placeholder="Title" value="${escapeHtml(parsed.title || '')}" required />
+		</div>`;
 
 		// Labels
 		if (parsed.labels && Array.isArray(parsed.labels)) {
@@ -149,7 +137,7 @@ function renderBodyField(field: BodyField): string {
 					const required = typeof option === 'object' ? option.required : false;
 					html += `<div class="checkbox-option">
 						<input type="checkbox" ${required ? 'required' : ''} />
-						<span>${escapeHtml(optionLabel)}${required ? '<span class="required-asterisk"> *</span>' : ''}</span>
+					<span>${simpleMarkdownToHtml(optionLabel)}${required ? '<span class="required-asterisk"> *</span>' : ''}</span>
 					</div>`;
 				});
 			}
