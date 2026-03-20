@@ -167,6 +167,13 @@ export function getWebviewContent(content: string): string {
 			width: auto;
 			margin: 0;
 		}
+		a {
+			color: var(--vscode-textLink-foreground);
+			text-decoration: none;
+		}
+		a:hover {
+			text-decoration: underline;
+		}
 		.error {
 			color: var(--vscode-errorForeground);
 			background: var(--vscode-inputValidation-errorBackground);

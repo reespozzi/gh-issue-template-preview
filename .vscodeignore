@@ -1,0 +1,10 @@
+.gitignore
+.vscode-test/
+esbuild.js
+eslint.config.mjs
+tsconfig.json
+src/
+node_modules/
+dist/extension.js.map
+**/*.test.ts
+**/.DS_Store

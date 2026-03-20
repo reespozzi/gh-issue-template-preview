@@ -62,6 +62,25 @@ export function simpleMarkdownToHtml(text: string): string {
 				html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
 				html = html.replace(/_(.+?)_/g, '<em>$1</em>');
 
+				// Convert markdown links [text](url)
+				html = html.replace(/\[([^\]]*?)\]\(([^)]*?)\)/g, (_, linkText, url) => {
+					const rawUrl = url
+						.replace(/&amp;/g, '&')
+						.replace(/&quot;/g, '"')
+						.replace(/&#039;/g, "'")
+						.replace(/&lt;/g, '<')
+						.replace(/&gt;/g, '>');
+					// Block dangerous URL schemes
+					if (/^(javascript|data|vscode|file):/i.test(rawUrl)) {
+						return `[${linkText}](${url})`;
+					}
+					// Use URL as-is if it already has a safe scheme, otherwise prepend https://
+					const href = /^https?:\/\//i.test(rawUrl) || /^mailto:/i.test(rawUrl)
+						? url
+						: `https://${url}`;
+					return `<a href="${href}" target="_blank" rel="noopener noreferrer">${linkText}</a>`;
+				});
+
 				return html;
 			});
 
