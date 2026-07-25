@@ -1,8 +1,8 @@
+# Developed to consolidate https://github.com/reespozzi/gh-issue-template-preview/blob/main/CONTRIBUTING.md#suggesting-features
 name: Feature request
 description: Feature suggestions are welcome!
 title: "Feature request: "
 body:
-# Developed in accordance with https://github.com/reespozzi/gh-issue-template-preview/blob/main/CONTRIBUTING.md#suggesting-features
   - type: markdown
     attributes:
       value: |
