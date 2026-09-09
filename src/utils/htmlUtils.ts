@@ -7,15 +7,23 @@
  * @param text - Text to escape
  * @returns Escaped HTML string
  */
+const htmlEntities = [
+	['&', '&amp;'],
+	['<', '&lt;'],
+	['>', '&gt;'],
+	['"', '&quot;'],
+	["'", '&#039;'],
+] as const;
+
+function decodeHtmlEntities(text: string): string {
+	return text.replace(
+		new RegExp(htmlEntities.map(([, e]) => e).join('|'), 'g'),
+		(m) => Object.fromEntries(htmlEntities.map(([c, e]) => [e, c]))[m]
+	);
+}
+
 export function escapeHtml(text: string): string {
-	const map: Record<string, string> = {
-		'&': '&amp;',
-		'<': '&lt;',
-		'>': '&gt;',
-		'"': '&quot;',
-		"'": '&#039;'
-	};
-	return text.replace(/[&<>"']/g, (m) => map[m]);
+	return text.replace(/[&<>"']/g, (m) => Object.fromEntries(htmlEntities)[m]);
 }
 
 /**
@@ -35,16 +43,11 @@ export function simpleMarkdownToHtml(text: string): string {
 
 	// Split by double newlines to get paragraphs (preserves intentional paragraph breaks)
 	const paragraphs = processed.split(/\n\s*\n/);
-	
+
 	const htmlParagraphs = paragraphs
 		.map(para => para.trim())
 		.filter(para => para.length > 0)
 		.map(para => {
-			// If it's already a heading, return as-is
-			if (para.match(/^<h[123]>/)) {
-				return para;
-			}
-
 			// Process single line breaks within the paragraph
 			const lines = para.split('\n')
 				.map(line => line.trim())
@@ -52,6 +55,11 @@ export function simpleMarkdownToHtml(text: string): string {
 
 			// Escape HTML and apply inline formatting for each line
 			const formattedLines = lines.map(line => {
+				// If it's already a heading, return as-is
+				if (line.match(/^<h[123]>/)) {
+					return line;
+				}
+
 				let html = escapeHtml(line);
 
 				// Convert bold (**text** or __text__)
@@ -62,23 +70,13 @@ export function simpleMarkdownToHtml(text: string): string {
 				html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
 				html = html.replace(/_(.+?)_/g, '<em>$1</em>');
 
-				// Convert markdown links [text](url)
-				html = html.replace(/\[([^\]]*?)\]\(([^)]*?)\)/g, (_, linkText, url) => {
-					const rawUrl = url
-						.replace(/&amp;/g, '&')
-						.replace(/&quot;/g, '"')
-						.replace(/&#039;/g, "'")
-						.replace(/&lt;/g, '<')
-						.replace(/&gt;/g, '>');
-					// Block dangerous URL schemes
+			// Convert markdown links [text](url "title") — note: input is already HTML-escaped, so " → &quot;, ' → &#039;
+			html = html.replace(/\[([^\]]*?)\]\(([^)\s]+)(?:\s+(?:&quot;|&#039;)(.*?)(?:&quot;|&#039;))?\)/g, (_, linkText, url, title) => {
+					const rawUrl = decodeHtmlEntities(url);
 					if (/^(javascript|data|vscode|file):/i.test(rawUrl)) {
 						return `[${linkText}](${url})`;
 					}
-					// Use URL as-is if it already has a safe scheme, otherwise prepend https://
-					const href = /^https?:\/\//i.test(rawUrl) || /^mailto:/i.test(rawUrl)
-						? url
-						: `https://${url}`;
-					return `<a href="${href}" target="_blank" rel="noopener noreferrer">${linkText}</a>`;
+					return `<a href="${/^https?:\/\//i.test(rawUrl) || /^mailto:/i.test(rawUrl) ? url : `https://${url}`}" target="_blank" rel="noopener noreferrer"${title ? ` title="${escapeHtml(decodeHtmlEntities(title))}"` : ''}>${linkText}</a>`;
 				});
 
 				return html;
