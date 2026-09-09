@@ -1,0 +1,86 @@
+# Developed to consolidate https://github.com/reespozzi/gh-issue-template-preview/blob/main/CONTRIBUTING.md#reporting-bugs
+name: Bug report
+description:  Report a bug.
+title: 'Bug: '
+body:
+  - type: checkboxes
+    id: noduplicates
+    attributes:
+      label: No duplicates?
+      description: Before creating a bug report, please check existing issues to see if the problem has already been reported.
+      options:
+        - label: I have searched the existing issues and found no duplicates
+          required: true
+  - type: input
+    id: description
+    attributes:
+      label: Clear description
+      placeholder: The link title is not separated from a link.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        ```
+        body:
+        - type: markdown
+          attributes:
+            value: |
+              [This issue](https://github.com/reespozzi/gh-issue-template-preview/issues/11 "View this issue")
+        ```
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      placeholder: See [GitHub Flavored Markdown Spec](https://github.github.com/gfm/) and [CommonMark Spec v0.31.2, 6.3](https://spec.commonmark.org/0.31.2/#links).
+    validations:
+      required: true
+  - type: upload
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: If applicable, add screenshots to help explain your problem.
+    validations:
+      required: false
+  - type: textarea
+    id: vscode
+    attributes:
+      label: VSCode version
+      description: '[Find VS Code version](https://code.visualstudio.com/docs/supporting/faq#_how-do-i-find-my-current-vs-code-version "How do I find my current VS Code version?")'
+      placeholder: |
+        Version: 1.130.0 (user setup)
+        Commit: 1b6a188127eeaf9194f945eb6eb89a657e93c54c
+        Date: 2026-07-22T14:55:04Z
+        Electron: 42.6.0
+        ElectronBuildId: 14623276
+        Chromium: 148.0.7778.280
+        Node.js: 24.18.0
+        V8: 14.8.178.38-electron.0
+        OS: Windows_NT arm64 10.0.26200
+    validations:
+      required: true
+  - type: dropdown
+    id: version
+    attributes:
+      label: Extension version
+      description: '[Manage extensions](https://code.visualstudio.com/docs/configure/extensions/extension-marketplace#_manage-extensions "Manage VS Code extensions")'
+      options:
+        - 0.1.4
+        - 0.1.3
+        - 0.1.2
+        - 0.1.1
+        - 0.1.0
+      default: 0
+    validations:
+      required: true
+  - type: upload
+    id: sample
+    attributes:
+      label: Sample template file
+      description: Add a sample template file that demonstrates the issue (if applicable).
+    validations:
+      required: false

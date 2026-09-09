@@ -1,0 +1,41 @@
+# Developed to consolidate https://github.com/reespozzi/gh-issue-template-preview/blob/main/CONTRIBUTING.md#suggesting-features
+name: Feature request
+description: Feature suggestions are welcome!
+title: "Feature request: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Feature suggestions are welcome!
+  - type: checkboxes
+    id: noduplicates
+    attributes:
+      label: No duplicates?
+      description: Before creating a feature request, please check existing issues to see if the feature has already been suggested.
+      options:
+        - label: I have searched the existing issues and found no duplicates
+          required: true
+  - type: textarea
+    id: desired
+    attributes:
+      label: Desired behavior
+      description: What is the desired behavior of the feature?
+      placeholder: I'm always frustrated when…
+    validations:
+      required: true
+  - type: textarea
+    id: usecases
+    attributes:
+      label: Use cases
+      description: Describe the use cases for the feature.
+      placeholder: I need this feature to…
+    validations:
+      required: true
+  - type: textarea
+    id: value
+    attributes:
+      label: Value
+      description: Explain why this feature would be useful to most users.
+      placeholder: This feature would be valuable because…
+    validations:
+      required: true
